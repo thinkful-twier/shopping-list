@@ -16,7 +16,7 @@ Storage.prototype.add = function(name) {
 
 Storage.prototype.remove = function(id) {
     for(var i=0; i < this.items.length; i++){
-        if(this.items[i].id === id){
+        if(this.items[i].id == id){
             var removed = this.items[i];
             this.items.splice(i, 1);
             return removed;
@@ -27,7 +27,7 @@ Storage.prototype.remove = function(id) {
 
 Storage.prototype.edit = function(id, newName) {
     for(var i=0; i < this.items.length; i++){
-        if(this.items[i].id === id){
+        if(this.items[i].id == id){
             this.items[i].name = newName;
             return this.items[i];
         }
@@ -61,7 +61,7 @@ app.delete('/items/:id', function(req, res) {
         return res.sendStatus(400);
    }
    
-   var removedItem = storage.remove(req.parmas.id);
+   var removedItem = storage.remove(req.params.id);
    
    if(removedItem){
        res.status(200).json(removedItem);
